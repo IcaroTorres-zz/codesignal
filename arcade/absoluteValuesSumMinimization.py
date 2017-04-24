@@ -11,18 +11,22 @@ Example
 For a = [2, 4, 7], the output should be
 absoluteValuesSumMinimization(a) = 4.
 '''
-
+# to minimize the sum of each ('array element' - 'unknown X' variable),
+# in a sorted array/list, X need to be a midle array position value.
+# odd length, X == value in length -1 divided by 2 position => [(5-1)/2]==[2]
+# even length, X == any of the midle positions => [(4-1)/2]==[1] or [(4/2)]==[2]
+# to generalize, choose one formula wich works to odd and even.
 def absoluteValuesSumMinimization(A):
     return A[(len(A)-1)//2]
 
-
-def absoluteValuesSumMinimization2(A):
+def absoluteValuesSumMinimization(A):
     return A[len(A)//2-(len(A)%2==0)]
 
-    #return A[len(A) / 2 + len(A) % 2 - 1]
+def absoluteValuesSumMinimization(A):
+    return A[len(A) / 2 + len(A) % 2 - 1]
 
-
-def absoluteValuesSumMinimization3(a):
+# this was bruteforced done
+def absoluteValuesSumMinimization(a):
   minimum = float("inf")
   element = 0
   d={}
@@ -39,14 +43,12 @@ def absoluteValuesSumMinimization3(a):
 
 
 #a = [1, 3, 5, 9, 13, 17, 21, 25]
-
 #a = [2, 4, 7]
-
 #a = [23]
-
-a = [-10, -10, -10, -10, -10, -9, -9, -9, -8, -8, -7, -6, -5, -4, -3, -2, -1, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
-
-print 70/2 + 70%2 -1
-print 73/2 + 73%2 -1
 #a = [-4, -1]
-#print absoluteValuesSumMinimization(a)==absoluteValuesSumMinimization2(a)
+a = [-10, -10, -10, -10, -10, -9, -9, -9, -8, -8, -7, -6, -5, -4, -3, -2, -1, 0,
+      0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+      20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+      39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+
+print absoluteValuesSumMinimization(a)

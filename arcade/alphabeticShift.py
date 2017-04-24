@@ -1,8 +1,10 @@
+# given a string, return a new string with each characters shifted to the next in alphabet
 import string
 def alphabeticShift(inputString):
 
     s = list(inputString) #cast to list
     l = list(string.letters) # string.lettes == alphabetic lower and upper cases
+
     #slicing list l creating lowercase and uppercase lists "s_a" and "s_A"
     s_a, s_A = l[:len(l)/2]+['a'], l[len(l)/2:]+['A']
 
@@ -12,7 +14,8 @@ def alphabeticShift(inputString):
     #dic with both previous togheter
     dic = dict(dic_s_a.items()+dic_s_A.items())
 
-    #changing chars in the list "s" cause values in string index <inputString[index]> can't be assigned
+    #changing chars in the list "s" cause values in string index <inputString[index]>
+    #can't be assigned
     for i,ch in enumerate(s):
       s[i] = dic[ch]
 
