@@ -1,11 +1,6 @@
 def spiralNumbers(n):
     # an empty matrix build
-    matrix=[]
-    for i in range(0,n): # line dimension 'n'
-        field = []
-        for j in range(0,n): # column dimension 'n'
-            field.append(' ') #dummy empty char cell
-        matrix.append(field) # line added filled with 'dummy'
+    matrix= [[' '] * n for k in range(n)]
 
     i,j=0,0 # indices to reach inside matrix
     cellValue=1 # value to be assigned inside matrix
@@ -41,6 +36,19 @@ def spiralNumbers(n):
         cellValue+=1
     return matrix
 
+def spiralNumbers(n):
+    res = [[0] * n for k in range(n)]
+    r, c = 0, -1
+    dr, dc = 0, 1
+    for k in range(n * n):
+        while True:
+            nr, nc = r + dr, c + dc
+            if 0 <= nr < n and 0 <= nc < n and res[nr][nc] == 0:
+                break
+            dr, dc = -dc, dr
+        r, c = nr, nc
+        res[r][c] = k + 1
+    return res
 print spiralNumbers(3)
 '''
     [[1, 2, 3],
