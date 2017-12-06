@@ -11,6 +11,13 @@ def differentSquares(m):
             s+=str(m[i][j+1])
             s+=str(m[i+1][j])
             s+=str(m[i+1][j+1])
+            print(s)
             l.append(s) # put the resulting string inside the list
     # cause we have string values inside the list, we can use set() to hash it
     return  len(set(l))
+
+
+differentSquares([
+    [1,3],
+    [3,6],
+    ])
