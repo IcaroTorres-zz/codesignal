@@ -1,4 +1,4 @@
-'''Trie Tree script class to solve codefights interview practice - Trees "isSubTree"'''
+'''Trie Tree script class to solve codefights interview practice - Trees "isSubstring"'''
 class Trie:
     '''Trie(letter) -> Trie letters Tree Object {
     \t    self.letter = letter,
