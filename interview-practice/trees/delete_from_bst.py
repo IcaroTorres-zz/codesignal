@@ -1,4 +1,4 @@
-'''Binary Search Tree script class to solve codefights interview practice'''
+'''Binary Search Tree script class to solve codefights interview practice Trees - "deleteFromBST"'''
 
 class BST(object):
     '''BST(value) -> Binary Search Tree Object {
@@ -91,8 +91,8 @@ class BST(object):
 
         print(inn(self))
 
-    def highest_value(self):
-        '''Get highest value under a BST'''
+    def predecessor(self):
+        '''Get highest value (predecessor) of a BST'''
         while self.right is not None:
             self = self.right
 
@@ -100,9 +100,9 @@ class BST(object):
 
     def remove_right(self):
         '''Replace BST by it's ".left" subtree if ".right" points to None,
-        Can also be replaced by None no childs.
-        When ".right" not points to None, applies this recursive function to it.
-        return passed BST changed in each recursive call'''
+        Can also be replaced by None no childs. When ".right" not points to None,
+        applies this recursive function to it. Return passed BST changed in each
+        recursive call'''
         if self.right is None:
             return self.left # can return None if not self.left
         else:
@@ -110,14 +110,12 @@ class BST(object):
         return self
 
     def process(self, value):
-        '''Process the BST against searched value.
-        Returning None if already an empty BST,
-        replacing removed node by the highest value after it,
-        Or recursively search on (".left" or ".right"),
-        if searched value > or < then ".value"'''
+        '''Process the BST against searched value. Returning None if already an empty BST,
+        replacing removed node by the highest value after it, Or recursively search on
+        (".left" or ".right"), if searched value > or < then ".value"'''
         if value == self.value:
             if self.left:
-                self.value, self.left = self.left.highest_value(), self.left.remove_right()
+                self.value, self.left = self.left.predecessor(), self.left.remove_right()
             else: self = self.right
         elif value < self.value:
             self.left = self.left.process(value) if self.left is not None else None
