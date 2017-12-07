@@ -1,5 +1,4 @@
 '''Binary Search Tree script class to solve codefights interview practice Trees - "kthSmallestInBST"'''
-
 # class code to test out of codefights
 class BST(object):
     '''BST(value) -> Binary Search Tree Object {
