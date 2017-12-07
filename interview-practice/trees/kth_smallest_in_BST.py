@@ -74,7 +74,7 @@ class BST(object):
         return self
 
 def kthSmallestInBST(bst, k):
-    '''kthSmallestInBST(BST, k) -> kth smallest  BST value | K <= count of BST nodes\n
+    '''kthSmallestInBST(BST, k) -> kth smallest  BST value | k <= count of BST nodes\n
     Return the kth smallest value from a inorder BST representation list'''
     def expand(bst):
         '''expand(BST) -> list\n

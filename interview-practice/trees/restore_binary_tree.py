@@ -1,6 +1,4 @@
 '''Binary Search Tree script to solve codefights interview practice Trees - "restoreBinaryTree"'''
-
-
 class BST(object):
     '''BST(value) -> Binary Search Tree Object {
     \t    self.value = value,
