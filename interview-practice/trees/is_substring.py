@@ -9,14 +9,15 @@ class Trie:
     and any number of children Trie Nodes on ".children" property
     (Ex: children['A'], children['z'], children['8']...) starting as an empty
     dictionary, and a ".terminal" property set as False as default'''
-    def __init__(self, letter):
+    def __init__(self, letter=''):
         self.letter = letter
         self.terminal = False
         self.children = {}
 
 
     def add_text_fragment(self, text_fragment):
-        '''Given a text fragment, for each char, check if there is such char already on
+        '''add_text_fragment(str) -> update Trie Object with new char Nodes\n
+        Given a text fragment, for each char, check if there is such char already on
         Trie Object and create a new Trie Object with this char if it is not there yet.
         Set the last Trie Object Node ".terminal" == True as successfully forming a text
         fragment inside the Trie.'''
@@ -28,7 +29,9 @@ class Trie:
         cur.terminal = True
 
 def enclose_substring(word, trie):
-    '''Given word and a Trie Object, return word with the longest path from "parts"
+    '''enclose_substring(str, Trie) -> updated str
+    (Ex: "well" -> "w[el]l", "element" -> "[el]ement"...)\n
+    Given word and a Trie Object, return word with the longest path from "parts"
     list within each "words" element enclosed by "[]" if the is such part as
     substring of element. If more than one part is substring of a "words" list element,
     return the one which occurs first.'''
@@ -52,19 +55,24 @@ def enclose_substring(word, trie):
 
 
 def findSubstrings(word_list, part_list):
-    '''Given two string lists (words, parts), return a list of strings similar to passed
+    '''findSubstrings(list1, list2) -> new list with updated list1 elements\n
+    Given two string lists (words, parts), return a list of strings similar to passed
     "words" list, with the longest part from "parts" list within each "words" element
     enclosed by "[]" if the is such part as substring of element. If more than one part
     is substring of a "words" list element, return the one which occurs first.'''
-    trie = Trie('')
+    trie = Trie()
     for part in part_list:
         trie.add_text_fragment(part)
     return [enclose_substring(word, trie) for word in word_list]
 
 
-words = ["neuroses", "myopic", "sufficient", "televise", "coccidiosis",
-    "gules", "during", "construe", "establish", "ethyl"]
-parts = ["aaaaa", "Aaaa", "E", "z", "Zzzzz", "a", "mel", "lon", "el", "An",
-    "ise", "d", "g", "wnoVV","i", "IUMc", "P", "KQ", "QfRz", "Xyj", "yiHS"]
-print(findSubstrings(words, parts))
+WORDS = [
+    "neuroses", "myopic", "sufficient", "televise", "coccidiosis", "gules", "during",
+    "construe", "establish", "ethyl"
+    ]
+PARTS = [
+    "aaaaa", "Aaaa", "E", "z", "Zzzzz", "a", "mel", "lon", "el", "An",
+    "ise", "d", "g", "wnoVV", "i", "IUMc", "P", "KQ", "QfRz", "Xyj", "yiHS"
+    ]
+print(findSubstrings(WORDS, PARTS))
 help(Trie)

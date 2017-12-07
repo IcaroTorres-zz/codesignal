@@ -32,7 +32,8 @@ class BST(object):
         return printable
 
     def find(self, value):
-        '''Search the given value "value" on BST Object and return
+        '''find(value) -> BST with given value | None\n
+        Search the given value "value" on BST Object and return
         the BST Node with it\'s ".value" == value or return None if not found'''
         if self.value == value:
             return self
@@ -46,7 +47,8 @@ class BST(object):
         return None
 
     def add(self, value):
-        '''Add a new BST Node with given "value" as a leaf BST Node
+        '''add(value) -> update BST if is a new value\n
+        Add a new BST Node with given "value" as a leaf BST Node
         on it\'s right place depending on the passed "value" and
         current BST organization'''
         if self.find(value):
@@ -70,9 +72,10 @@ class BST(object):
         return self
 
     def flatten(self):
-        '''Return a "BST inorder transversal" list Object. Ex: "[1,3,4,7,9,11...]"'''
+        '''flatten(BST) -> [list with inorder traversal BST values] | []\n
+        Return a "BST inorder traversal" list Object. Ex: "[1,3,4,7,9,11...]"'''
         def flat(bst):
-            '''Recursive "BST inorder transversal"'''
+            '''Recursive "BST inorder traversal"'''
             if bst.value is None:
                 return []
             left = flat(bst.left) if bst.left else []
@@ -82,7 +85,7 @@ class BST(object):
         return flat(self)
 
     def inorder(self):
-        '''Print "BST inorder transversal" values'''
+        '''inorder(BST) -> Print "BST inorder traversal" values as string'''
         def inn(bst):
             '''Internal recursive concat loop '''
             left = inn(bst.left) if bst.left else ""
@@ -92,14 +95,16 @@ class BST(object):
         print(inn(self))
 
     def predecessor(self):
-        '''Get highest value (predecessor) of a BST'''
+        '''predecessor(BST) -> value | all other BST children values < value < BST.value\n
+        Get highest value (predecessor) of a BST'''
         while self.right is not None:
             self = self.right
 
         return self.value
 
     def remove_right(self):
-        '''Replace BST by it's ".left" subtree if ".right" points to None,
+        '''remove_right(BST) -> BST subtree to replace the one to be removed as follows:\n
+        Replace BST by it's ".left" subtree if ".right" points to None,
         Can also be replaced by None no childs. When ".right" not points to None,
         applies this recursive function to it. Return passed BST changed in each
         recursive call'''
@@ -110,7 +115,8 @@ class BST(object):
         return self
 
     def process(self, value):
-        '''Process the BST against searched value. Returning None if already an empty BST,
+        '''process(value) -> updated BST reorganized with value removed as follows:\n
+        Process the BST against searched value. Returning None if already an empty BST,
         replacing removed node by the highest value after it, Or recursively search on
         (".left" or ".right"), if searched value > or < then ".value"'''
         if value == self.value:
@@ -124,28 +130,28 @@ class BST(object):
         return self
 
     def deleteFromBST(self, query_list):
-        '''Delete each BST Node with values of a given "query list" List Object
-        if that value is on BST. Also reorganize the BST structure if needed
-        to maintain all BST structure rules'''
+        '''deleteFromBST(BST) -> updated BST with a step-by-step removal process as follows:\n
+        Delete each BST Node with values of a given "query list" List Object if that value is
+        on BST. Also reorganize the BST structure if needed to maintain all BST structure rules'''
 
         for value in query_list:
             self = self.process(value)
 
         return self
 
-inserts = [56,36,88,102,39,28,11,24,13,8,7,20,17,45,101,102,24,13]
-queries = [88,24,11,101,21,45,51,56]
-root = BST()
+INSERTS = [56, 36, 88, 102, 39, 28, 11, 24, 13, 8, 7, 20, 17, 45, 101, 102, 24, 13]
+QUERIES = [88, 24, 11, 101, 21, 45, 51, 56]
+ROOT = BST()
 
-for i in inserts:
-    root.add(i)
-indorderlist = root.flatten()
-root.inorder()
-print(indorderlist)
-result = root.deleteFromBST(queries)
-if result:
-    print(result.tostring())
+for i in INSERTS:
+    ROOT.add(i)
+INORDER_LIST = ROOT.flatten()
+ROOT.inorder()
+print(INORDER_LIST)
+RESULT = ROOT.deleteFromBST(QUERIES)
+if RESULT:
+    print(RESULT.tostring())
 else:
-    print (None)
+    print(None)
 
 help(BST)

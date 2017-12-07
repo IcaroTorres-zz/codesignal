@@ -35,7 +35,8 @@ class BST(object):
         return printable
 
     def find(self, value):
-        '''Search the given value "value" on BST Object and return
+        '''find(value) -> BST with given value | None\n
+        Search the given value "value" on BST Object and return
         the BST Node with it\'s ".value" == value or return None if not found'''
         if self.value == value:
             return self
@@ -49,7 +50,8 @@ class BST(object):
         return None
 
     def add(self, value):
-        '''Add a new BST Node with given "value" as a leaf BST Node
+        '''add(value) -> update BST if is a new value\n
+        Add a new BST Node with given "value" as a leaf BST Node
         on it\'s right place depending on the passed "value" and
         current BST organization'''
         if self.find(value):
@@ -73,7 +75,8 @@ class BST(object):
         return self
 
 def equals(bst1, bst2):
-    '''Return True or False if BST Object 1 === BST Object 2,
+    '''equals(BST1,BST2) -> True | False\n
+    Return True or False if BST Object 1 === BST Object 2,
     spreading this process to all children subtrees.'''
     if bst1 is None and bst2 is None:
         return True
@@ -86,7 +89,8 @@ def equals(bst1, bst2):
 
 
 def isSubtree(bst1, bst2):
-    '''Returns if in bst1 there is an occurrence of some bst2 Object
+    '''isSubtree(BST1,BST2) -> True | False\n
+    Returns if in bst1 there is an occurrence of some bst2 Object
     in which from it all subsequent children of both objects are equal,
     thus resulting in bst2 being subtree of bst1. '''
 

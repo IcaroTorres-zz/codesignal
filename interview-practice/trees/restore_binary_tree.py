@@ -35,7 +35,8 @@ class BST(object):
         return printable
 
 def restoreBinaryTree(bst_inorder_list, bst_preorder_list):
-    '''Given 2 lists (inorder and preorder) representing BST
+    '''restoreBinaryTree(inorder_list, preorder_list) -> BST Object\n
+    Given 2 lists (inorder and preorder) representing BST
     "inorder traversal" and "preorder traversal", return a
     BST Object structured with all corresponding children"'''
     bst = BST(bst_preorder_list[0])
@@ -52,7 +53,7 @@ def restoreBinaryTree(bst_inorder_list, bst_preorder_list):
     return bst
 
 
-inorder = [2, 10, 15, 16, 17, 21, 22, 29, 30, 33, 38, 41]
-preorder = [21, 15, 10, 2, 17, 16, 33, 29, 22, 30, 38, 41]
-print(restoreBinaryTree(inorder, preorder).tostring())
+INORDER = [2, 10, 15, 16, 17, 21, 22, 29, 30, 33, 38, 41]
+PREORDER = [21, 15, 10, 2, 17, 16, 33, 29, 22, 30, 38, 41]
+print(restoreBinaryTree(INORDER, PREORDER).tostring())
 help(BST)
