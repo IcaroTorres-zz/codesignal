@@ -66,14 +66,13 @@ class Tree(object):
 
 def findProfession(level, pos):
     '''findProfession(int, int) -> str\n
-    Return a string "Engineer" | "Doctor" depending on what profession value 
+    Return a string "Engineer" | "Doctor" depending on what profession value
     woul'd be contained on the Tree at especified level and position'''
     base = 'ed'
     for i in range(level - 2):
         base += base[len(base) // 2:] + base[:len(base) // 2]
     return 'Engineer' if base[pos - 1] == 'e' else 'Doctor'
 
-# dummy hardcode 
 TREE = Tree('E')
 TREE.add_levels(6)
 print(TREE.tostring())
