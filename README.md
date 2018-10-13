@@ -1,2 +1,2 @@
-# codefights
-My Codefights solutions
+# codesignal
+My Codesignal solutions
